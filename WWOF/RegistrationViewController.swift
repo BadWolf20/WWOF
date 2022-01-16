@@ -91,7 +91,7 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        navigationItem.title = "Settings"
+        navigationItem.title = NSLocalizedString("RegistrationViewTitle", comment: "")
         setupHierarchy()
         setupLayout()
 

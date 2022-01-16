@@ -55,7 +55,7 @@ class SignInViewController: UIViewController {
     private lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Strings.registerButtonTitle, for: .normal)
-        //button.addTarget(self, action: #selector(moveToRegistrationPage), for: .touchUpInside)
+        button.addTarget(self, action: #selector(moveToRegistrationPage), for: .touchUpInside)
         button.backgroundColor = Colors.registerButtonBackGround
         button.setTitleColor(Colors.registerButtonTitle, for: .normal)
         button.layer.masksToBounds = true
@@ -81,7 +81,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Autorization"
+        navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
         setupHierarchy()
         setupLayout()
     }

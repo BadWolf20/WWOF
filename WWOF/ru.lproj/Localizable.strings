@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  WWOF
+
+  Created by Roman on 16.01.2022.
+  
+*/
+
+"SignInViewTitle" = "Авторизация";
+"RegistationViewTitle" = "Регистрация";

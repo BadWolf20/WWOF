@@ -130,6 +130,18 @@ class SignInViewController: UIViewController {
 
 }
 
+// MARK: - Functions
+extension SignInViewController{
+
+    // Button actions
+    @objc private func moveToRegistrationPage(){
+        navigationController?.pushViewController(RegistrationViewController(), animated: true)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.navigationBar.isHidden = false
+    }
+}
+
+
 
 // MARK: - Constants
 

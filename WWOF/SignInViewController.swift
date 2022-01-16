@@ -173,11 +173,11 @@ extension SignInViewController{
 
         let tabBarController = UITabBarController()
 
-        let secondViewController = UserPageViewController()
-        secondViewController.tabBarItem = UITabBarItem(title: "Second", image: .remove, tag: 0)
+        let UserPageViewController = UserPageViewController()
+        UserPageViewController.tabBarItem = UITabBarItem(title: "Profile", image: .remove, tag: 0)
 
         tabBarController.setViewControllers([
-            secondViewController
+            UserPageViewController
         ], animated: true)
         tabBarController.tabBar.backgroundColor = .white
 

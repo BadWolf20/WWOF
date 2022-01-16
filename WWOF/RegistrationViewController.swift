@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class RegistrationViewController: UIViewController {
 
@@ -65,7 +67,7 @@ class RegistrationViewController: UIViewController {
     // Buttons
     private lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
-        //button.addTarget(self, action: #selector(registration), for: .touchUpInside)
+        button.addTarget(self, action: #selector(registration), for: .touchUpInside)
         button.setTitle(Strings.registerButtonTitle, for: .normal)
         button.backgroundColor = Colors.buttonBackGround
         button.layer.masksToBounds = true
@@ -147,6 +149,37 @@ class RegistrationViewController: UIViewController {
 
     }
 
+}
+
+// MARK: - Functions
+extension RegistrationViewController{
+
+    // Button actions
+    @objc private func registration(){
+        //navigationController?.pushViewController(UserPageController(), animated: true)
+        let email = textFieldLogin.text ?? "error"
+        let password = textFieldPassword.text ?? "error"
+        let name = textFieldName.text ?? "error"
+        let surname = textFieldSurname.text ?? "error"
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                self.infoLabel.text = "\(String(describing: error?.localizedDescription))"
+            } else {
+                let bd = Firestore.firestore()
+                bd.collection("users").document(result!.user.uid).setData([
+                    "First name": name,
+                    "Last name": surname
+                ], merge: true){ (error) in
+                    if error != nil {
+                        fatalError("Error in saving")
+                    }
+                }
+                self.navigationController?.popViewController(animated: true)
+            }
+
+        }
+
+    }
 }
 
 // MARK: - Constants

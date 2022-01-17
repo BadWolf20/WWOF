@@ -12,6 +12,14 @@ import FirebaseAuth
 class SignInViewController: UIViewController {
 
     // MARK: - Views
+    // ScrollView
+    lazy var scrollView: UIScrollView = {
+        let obj = UIScrollView(frame: view.bounds)
+        obj.backgroundColor = .green
+        obj.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height)
+        return obj
+    }()
+
     // TextFields
     lazy var textFieldLogin: UITextField = {
         let field = UITextField()
@@ -83,26 +91,52 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+
         navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
         setupHierarchy()
         setupLayout()
     }
 
+
+
     // MARK: - Settings
     private func setupHierarchy() {
-        view.addSubview(textFieldLogin)
-        view.addSubview(textFieldPassword)
-        view.addSubview(loginButton)
-        view.addSubview(registerButton)
-        view.addSubview(infoLabel)
+        view.addSubview(scrollView)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardApear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDisapear), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        scrollView.addSubview(textFieldLogin)
+        scrollView.addSubview(textFieldPassword)
+        scrollView.addSubview(loginButton)
+        scrollView.addSubview(registerButton)
+        scrollView.addSubview(infoLabel)
+
+    }
+
+    var isExpand = false
+    @objc func keyBoardApear(notification: NSNotification){
+        if !isExpand {
+            let keyboardFrame: NSValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)!
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+            scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollView.contentSize.height + keyboardHeight)
+            isExpand = true
+        }
+    }
+    @objc func keyBoardDisapear(){
+        if isExpand {
+            scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollView.contentSize.height - 300)
+            isExpand = false
+        }
     }
 
     private func setupLayout() {
 
         textFieldLogin.translatesAutoresizingMaskIntoConstraints = false
         textFieldLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        textFieldLogin.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Metric.textFieldFirstTopOffset).isActive = true
+        textFieldLogin.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Metric.textFieldFirstTopOffset).isActive = true
         textFieldLogin.heightAnchor.constraint(equalToConstant: Metric.textFieldHeight).isActive = true
         textFieldLogin.widthAnchor.constraint(equalToConstant: Metric.textFieldWidth).isActive = true
 
@@ -118,15 +152,17 @@ class SignInViewController: UIViewController {
         loginButton.heightAnchor.constraint(equalToConstant: Metric.loginButtonHeight).isActive = true
         loginButton.widthAnchor.constraint(equalToConstant: Metric.loginButtonWidth).isActive = true
 
-        registerButton.translatesAutoresizingMaskIntoConstraints = false
-        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Metric.registerButtonBottomIndent).isActive = true
-        registerButton.heightAnchor.constraint(equalToConstant: Metric.registerButtonHeight).isActive = true
-        registerButton.widthAnchor.constraint(equalToConstant: Metric.registerButtonWidth).isActive = true
-
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         infoLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Metric.infoLabelTopIndent).isActive = true
+
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
+        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        registerButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: Metric.registerButtonTopIndent).isActive = true
+        registerButton.heightAnchor.constraint(equalToConstant: Metric.registerButtonHeight).isActive = true
+        registerButton.widthAnchor.constraint(equalToConstant: Metric.registerButtonWidth).isActive = true
+
+
 
     }
 
@@ -217,7 +253,7 @@ extension SignInViewController{
         // registerButton
         static let registerButtonHeight: CGFloat = 20
         static let registerButtonWidth: CGFloat = 100
-        static let registerButtonBottomIndent: CGFloat = -40
+        static let registerButtonTopIndent: CGFloat = 40
         // loginButton
         static let loginButtonHeight: CGFloat = 30
         static let loginButtonWidth: CGFloat = 80

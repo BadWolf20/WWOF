@@ -13,9 +13,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Views
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: view.bounds, collectionViewLayout: createCompLayout())
-        //view.frame = CGRect.init(origin: CGPoint(x: 10, y: head.frame.height + 20), size: view.frame.size)
         view.backgroundColor = .systemOrange
-
         //view.register(DogCell.self, forCellWithReuseIdentifier: DogCell.reuseId)
         let nibCell = UINib(nibName: "DogViewCell", bundle: nil)
         view.register(nibCell, forCellWithReuseIdentifier: "DogViewCellid")
@@ -48,27 +46,25 @@ class ProfileViewController: UIViewController {
         setupHierarchy()
         setupLayout()
 
-
-        //createDataSouse()
-        //reloadData()
     }
 
 
     // MARK: - Settings
     private func setupHierarchy() {
-        view.addSubview(collectionView)
         view.addSubview(head)
+        view.addSubview(collectionView)
     }
 
     private func setupLayout() {
+        view.backgroundColor = .cyan
         head.translatesAutoresizingMaskIntoConstraints = false
-        head.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        head.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         head.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 160).isActive = true
-        head.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        head.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        head.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        head.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: head.bottomAnchor, constant: 0).isActive = true
+        collectionView.topAnchor.constraint(equalTo: head.bottomAnchor, constant: 10).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -110,18 +106,19 @@ class ProfileViewController: UIViewController {
 
     func createFriendRequestSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(156))
+                                              heightDimension: .fractionalHeight(222))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .estimated(1))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
 
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .none
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         return section
     }
 }
@@ -139,6 +136,7 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         collectionView.register(nibCell, forCellWithReuseIdentifier: "DogViewCellid")
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DogViewCellid", for: indexPath) as? DogViewCell
+        cell?.layer.cornerRadius = 10
         cell?.configure(with: dogList[0])
         return cell!
     }

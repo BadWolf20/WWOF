@@ -24,20 +24,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MWy-Tz-0vL">
-                    <rect key="frame" x="20" y="44" width="80" height="100"/>
+                    <rect key="frame" x="20" y="54" width="80" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="ym0-VG-Cvb"/>
                         <constraint firstAttribute="height" constant="100" id="zin-oe-doM"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIh-IC-nLF">
-                    <rect key="frame" x="120" y="44" width="34" height="21"/>
+                    <rect key="frame" x="120" y="54" width="34" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фамилия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vG6-9Z-4Ee">
-                    <rect key="frame" x="120" y="65" width="73" height="21"/>
+                    <rect key="frame" x="120" y="75" width="73" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9z-t4-mHC">
-                    <rect key="frame" x="296.5" y="44" width="97.5" height="30"/>
+                    <rect key="frame" x="296.5" y="54" width="97.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="RYw-f5-gkY"/>
                     </constraints>
@@ -72,8 +72,8 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Q9z-t4-mHC" secondAttribute="trailing" constant="20" id="OCT-sP-ArK"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="77o-5y-wcG" secondAttribute="trailing" constant="20" id="eWe-te-Q3w"/>
                 <constraint firstItem="QoY-kp-cPI" firstAttribute="trailing" secondItem="77o-5y-wcG" secondAttribute="trailing" id="eoK-TX-jXa"/>
-                <constraint firstItem="Q9z-t4-mHC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="eto-Nh-hCE"/>
-                <constraint firstItem="MWy-Tz-0vL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gyu-CZ-6nI"/>
+                <constraint firstItem="Q9z-t4-mHC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="eto-Nh-hCE"/>
+                <constraint firstItem="MWy-Tz-0vL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="gyu-CZ-6nI"/>
                 <constraint firstItem="MWy-Tz-0vL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="hkh-xV-cVW"/>
                 <constraint firstItem="dIh-IC-nLF" firstAttribute="leading" secondItem="MWy-Tz-0vL" secondAttribute="trailing" constant="20" id="idg-Zz-kPF"/>
                 <constraint firstItem="vG6-9Z-4Ee" firstAttribute="top" secondItem="dIh-IC-nLF" secondAttribute="bottom" id="lTb-dD-g8f"/>

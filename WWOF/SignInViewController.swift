@@ -79,6 +79,7 @@ class SignInViewController: UIViewController {
         return label
     }()
 
+    let head = headerView(frame: CGRect(x: 10, y: 10, width: 100, height: 40))
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,20 +146,23 @@ extension SignInViewController{
     @objc private func autorization(){
         let email = textFieldLogin.text ?? "error"
         let password = textFieldPassword.text ?? "error"
-        var uid = String()
 
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil{
                 self.infoLabel.text = error?.localizedDescription
             } else {
-                uid = result?.user.uid ?? "uid error"
+                userUId = result?.user.uid ?? "uid error"
 
                 let bd = Firestore.firestore()
-                bd.collection("users").document(uid).getDocument(completion: { (document, error) in
+//                bd.collection("users").document(uid).getDocument(){ (document, error) in
+//                    guard error == nil else {completion(nil); return}
+//                }
+                bd.collection("users").document(userUId).getDocument(completion: { (document, error) in
                     if let document = document, document.exists {
                         print(document.get("First name") ?? "error")
                         let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                         print("-Document data: \(dataDescription)")
+                        profileData = document.data()!
                     } else {
                         self.infoLabel.text = "Document does not exist"
                     }
@@ -173,7 +177,7 @@ extension SignInViewController{
 
         let tabBarController = UITabBarController()
 
-        let UserPageViewController = UserPageViewController()
+        let UserPageViewController = ProfileViewController()
         UserPageViewController.tabBarItem = UITabBarItem(title: "Profile", image: .remove, tag: 0)
 
         tabBarController.setViewControllers([

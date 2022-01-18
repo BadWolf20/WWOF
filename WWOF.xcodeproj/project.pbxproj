@@ -92,6 +92,7 @@
 				307E9DC127932EBB00333874 /* Info.plist */,
 				307E9DC72793318600333874 /* GoogleService-Info.plist */,
 				307E9DD22793E86A00333874 /* RegistrationViewController.swift */,
+				307E9DEC27940B5300333874 /* DogsModel.swift */,
 				307E9DDB2793F38000333874 /* Localizable.strings */,
 				307E9DE62794071100333874 /* Profile */,
 			);
@@ -104,7 +105,6 @@
 				307E9E07279553BF00333874 /* header view */,
 				307E9DF2279410FF00333874 /* DogCell */,
 				307E9DE22793FA9700333874 /* ProfileViewController.swift */,
-				307E9DEC27940B5300333874 /* DogsModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

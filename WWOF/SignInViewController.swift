@@ -134,7 +134,7 @@ class SignInViewController: UIViewController {
 }
 
 // MARK: - Functions
-extension SignInViewController{
+extension SignInViewController {
 
     // Button actions
     @objc private func moveToRegistrationPage(){

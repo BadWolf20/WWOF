@@ -23,6 +23,7 @@ class headerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        firstSetup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,14 +38,9 @@ class headerView: UIView {
         addSubview(viewFrom)
     }
 
-}
-
-
-extension headerView {
-    func roundCornerView(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
+    func firstSetup() {
+        personImage.image = UIImage(named: "DefaultPerson")
     }
+
+
 }

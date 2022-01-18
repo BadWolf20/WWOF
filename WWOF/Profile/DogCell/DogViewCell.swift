@@ -10,8 +10,6 @@ import UIKit
 class DogViewCell: UICollectionViewCell {
     //var reuseIdentifier = "DogViewCell"
 
-    @IBOutlet weak var breedLabel: UILabel!
-    @IBOutlet weak var NameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,8 +17,8 @@ class DogViewCell: UICollectionViewCell {
     }
 
     func configure(with info: Dog) {
-        breedLabel.text = info.breed
-        NameLabel.text = info.name
+        //breedLabel.text = info.breed
+        //NameLabel.text = info.name
         //friendImageView.image = info.imageMain
     }
 }

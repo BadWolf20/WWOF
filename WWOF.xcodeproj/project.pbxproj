@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3063E79E2796F2CD004E0DB1 /* DogSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */; };
 		307E9DB427932EB900333874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307E9DB327932EB900333874 /* AppDelegate.swift */; };
 		307E9DB827932EB900333874 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307E9DB727932EB900333874 /* SignInViewController.swift */; };
 		307E9DBB27932EB900333874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307E9DB927932EB900333874 /* Main.storyboard */; };
@@ -26,9 +27,11 @@
 		307E9DFE2794331000333874 /* DogViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 307E9DFC2794331000333874 /* DogViewCell.xib */; };
 		307E9E0D2795595800333874 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307E9E0C2795595800333874 /* headerView.swift */; };
 		307E9E0F2795598B00333874 /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 307E9E0E2795598A00333874 /* headerView.xib */; };
+		30EA499327B3B1D7005F0AC0 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EA499227B3B1D6005F0AC0 /* SignInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSetupViewController.swift; sourceTree = "<group>"; };
 		307E9DB027932EB900333874 /* WWOF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWOF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		307E9DB327932EB900333874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		307E9DB727932EB900333874 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		307E9DFC2794331000333874 /* DogViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DogViewCell.xib; sourceTree = "<group>"; };
 		307E9E0C2795595800333874 /* headerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
 		307E9E0E2795598A00333874 /* headerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = headerView.xib; sourceTree = "<group>"; };
+		30EA499227B3B1D6005F0AC0 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3063E79C2796F29B004E0DB1 /* Dog setup */ = {
+			isa = PBXGroup;
+			children = (
+				3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */,
+			);
+			path = "Dog setup";
+			sourceTree = "<group>";
+		};
 		307E9DA727932EB900333874 = {
 			isa = PBXGroup;
 			children = (
@@ -83,17 +95,11 @@
 		307E9DB227932EB900333874 /* WWOF */ = {
 			isa = PBXGroup;
 			children = (
-				307E9DB327932EB900333874 /* AppDelegate.swift */,
+				30EA498927B38C4A005F0AC0 /* Sources */,
+				30EA498A27B38C67005F0AC0 /* Resources */,
 				307E9DB727932EB900333874 /* SignInViewController.swift */,
 				307E9DE4279402E100333874 /* APIManager.swift */,
-				307E9DB927932EB900333874 /* Main.storyboard */,
-				307E9DBC27932EBB00333874 /* Assets.xcassets */,
-				307E9DBE27932EBB00333874 /* LaunchScreen.storyboard */,
-				307E9DC127932EBB00333874 /* Info.plist */,
-				307E9DC72793318600333874 /* GoogleService-Info.plist */,
 				307E9DD22793E86A00333874 /* RegistrationViewController.swift */,
-				307E9DEC27940B5300333874 /* DogsModel.swift */,
-				307E9DDB2793F38000333874 /* Localizable.strings */,
 				307E9DE62794071100333874 /* Profile */,
 			);
 			path = WWOF;
@@ -102,6 +108,7 @@
 		307E9DE62794071100333874 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				3063E79C2796F29B004E0DB1 /* Dog setup */,
 				307E9E07279553BF00333874 /* header view */,
 				307E9DF2279410FF00333874 /* DogCell */,
 				307E9DE22793FA9700333874 /* ProfileViewController.swift */,
@@ -125,6 +132,77 @@
 				307E9E0E2795598A00333874 /* headerView.xib */,
 			);
 			path = "header view";
+			sourceTree = "<group>";
+		};
+		30EA498927B38C4A005F0AC0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				30EA498D27B38D21005F0AC0 /* Extensions */,
+				30EA498C27B38D0D005F0AC0 /* Scenes */,
+				30EA498B27B38CFE005F0AC0 /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		30EA498A27B38C67005F0AC0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				307E9DB927932EB900333874 /* Main.storyboard */,
+				307E9DBC27932EBB00333874 /* Assets.xcassets */,
+				307E9DBE27932EBB00333874 /* LaunchScreen.storyboard */,
+				307E9DC127932EBB00333874 /* Info.plist */,
+				307E9DC72793318600333874 /* GoogleService-Info.plist */,
+				307E9DDB2793F38000333874 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		30EA498B27B38CFE005F0AC0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				307E9DB327932EB900333874 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		30EA498C27B38D0D005F0AC0 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				30EA499127B38D48005F0AC0 /* Model */,
+				30EA499027B38D42005F0AC0 /* View */,
+				30EA498F27B38D3A005F0AC0 /* Controller */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		30EA498D27B38D21005F0AC0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		30EA498F27B38D3A005F0AC0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		30EA499027B38D42005F0AC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				30EA499227B3B1D6005F0AC0 /* SignInView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		30EA499127B38D48005F0AC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				307E9DEC27940B5300333874 /* DogsModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,9 +294,11 @@
 				307E9E0D2795595800333874 /* headerView.swift in Sources */,
 				307E9DD32793E86A00333874 /* RegistrationViewController.swift in Sources */,
 				307E9DE5279402E100333874 /* APIManager.swift in Sources */,
+				30EA499327B3B1D7005F0AC0 /* SignInView.swift in Sources */,
 				307E9DB827932EB900333874 /* SignInViewController.swift in Sources */,
 				307E9DB427932EB900333874 /* AppDelegate.swift in Sources */,
 				307E9DFD2794331000333874 /* DogViewCell.swift in Sources */,
+				3063E79E2796F2CD004E0DB1 /* DogSetupViewController.swift in Sources */,
 				307E9DED27940B5300333874 /* DogsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

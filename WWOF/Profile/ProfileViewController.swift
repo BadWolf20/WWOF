@@ -43,6 +43,10 @@ class ProfileViewController: UIViewController {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+
     // MARK: - Settings
     private func setupHierarchy() {
         view.addSubview(head)
@@ -125,6 +129,10 @@ extension ProfileViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         return section
     }
+
+    func moveToDogSetup() {
+        navigationController?.pushViewController(DogSetupViewController(), animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
@@ -146,6 +154,7 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        moveToDogSetup()
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 

@@ -1,16 +1,25 @@
 //
-//  RegistrationViewController.swift
+//  RegistrationView.swift
 //  WWOF
 //
-//  Created by Roman on 16.01.2022.
+//  Created by Roman on 10.02.2022.
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
-class RegistrationViewController: UIViewController {
+class RegistrationView: UIView {
 
+    // MARK: - Configuration
+    func configureView() {
+
+    }
+
+    // MARK: - Private properties
+    lazy var controller: RegistrationViewController = {
+        return RegistrationViewController()
+    }()
+
+    // MARK: - Views
     // MARK: - Components
     // TextFields
     lazy var textFieldLogin: UITextField = {
@@ -89,102 +98,82 @@ class RegistrationViewController: UIViewController {
         return label
     }()
 
-    // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .black
-        navigationItem.title = NSLocalizedString("RegistrationViewTitle", comment: "")
+    // MARK: - Initial
+
+    init() {
+        super.init(frame: .zero)
+        commonInit()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        backgroundColor = .black
         setupHierarchy()
         setupLayout()
-
-
     }
 
     // MARK: - Settings
     private func setupHierarchy() {
-        view.addSubview(textFieldName)
-        view.addSubview(textFieldSurname)
-        view.addSubview(textFieldLogin)
-        view.addSubview(textFieldPassword)
-        view.addSubview(registerButton)
-        view.addSubview(infoLabel)
-
+        addSubview(textFieldName)
+        addSubview(textFieldSurname)
+        addSubview(textFieldLogin)
+        addSubview(textFieldPassword)
+        addSubview(registerButton)
+        addSubview(infoLabel)
     }
 
     private func setupLayout() {
-
         textFieldName.translatesAutoresizingMaskIntoConstraints = false
-        textFieldName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        textFieldName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Metric.textFieldFirstTopOffset).isActive = true
+        textFieldName.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        textFieldName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metric.textFieldFirstTopOffset).isActive = true
         textFieldName.heightAnchor.constraint(equalToConstant: Metric.textFieldHeight).isActive = true
         textFieldName.widthAnchor.constraint(equalToConstant: Metric.textFieldWidth).isActive = true
 
         textFieldSurname.translatesAutoresizingMaskIntoConstraints = false
-        textFieldSurname.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        textFieldSurname.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         textFieldSurname.topAnchor.constraint(equalTo: textFieldName.bottomAnchor, constant: Metric.textFieldTopIndent).isActive = true
         textFieldSurname.heightAnchor.constraint(equalToConstant: Metric.textFieldHeight).isActive = true
         textFieldSurname.widthAnchor.constraint(equalToConstant: Metric.textFieldWidth).isActive = true
 
         textFieldLogin.translatesAutoresizingMaskIntoConstraints = false
-        textFieldLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        textFieldLogin.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         textFieldLogin.topAnchor.constraint(equalTo: textFieldSurname.bottomAnchor, constant: Metric.textFieldTopIndent).isActive = true
         textFieldLogin.heightAnchor.constraint(equalToConstant: Metric.textFieldHeight).isActive = true
         textFieldLogin.widthAnchor.constraint(equalToConstant: Metric.textFieldWidth).isActive = true
 
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
-        textFieldPassword.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        textFieldPassword.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         textFieldPassword.topAnchor.constraint(equalTo: textFieldLogin.bottomAnchor, constant: Metric.textFieldTopIndent).isActive = true
         textFieldPassword.heightAnchor.constraint(equalToConstant: Metric.textFieldHeight).isActive = true
         textFieldPassword.widthAnchor.constraint(equalToConstant: Metric.textFieldWidth).isActive = true
 
         registerButton.translatesAutoresizingMaskIntoConstraints = false
-        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        registerButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         registerButton.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: Metric.registerButtonTopIndent).isActive = true
         registerButton.heightAnchor.constraint(equalToConstant: Metric.registerButtonHeight).isActive = true
         registerButton.widthAnchor.constraint(equalToConstant: Metric.registerButtonWidth).isActive = true
 
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        infoLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         infoLabel.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: Metric.infoLabelTopIndent).isActive = true
 
     }
 
-}
-
-// MARK: - Functions
-extension RegistrationViewController{
-
-    // Button actions
+    // MARK: - Actions
     @objc private func registration(){
         //navigationController?.pushViewController(UserPageController(), animated: true)
         let email = textFieldLogin.text ?? "error"
         let password = textFieldPassword.text ?? "error"
         let name = textFieldName.text ?? "error"
         let surname = textFieldSurname.text ?? "error"
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error != nil {
-                self.infoLabel.text = "\(String(describing: error?.localizedDescription))"
-            } else {
-                let bd = Firestore.firestore()
-                bd.collection("users").document(result!.user.uid).setData([
-                    "First name": name,
-                    "Last name": surname
-                ], merge: true){ (error) in
-                    if error != nil {
-                        fatalError("Error in saving")
-                    }
-                }
-                self.navigationController?.popViewController(animated: true)
-            }
-
-        }
+        controller.registration(email: email, password: password, name: name, surname: surname)
 
     }
-}
-
-// MARK: - Constants
-
-extension RegistrationViewController{
+    // MARK: - Constants
     enum Colors {
         static let textFieldBackGround: UIColor = .orange
         static let textFieldText: UIColor = .systemGray
@@ -220,6 +209,7 @@ extension RegistrationViewController{
         static let infoText: String = ""
 
     }
+
+
+
 }
-
-

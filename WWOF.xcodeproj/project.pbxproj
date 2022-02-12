@@ -27,6 +27,7 @@
 		307E9DFE2794331000333874 /* DogViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 307E9DFC2794331000333874 /* DogViewCell.xib */; };
 		307E9E0D2795595800333874 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307E9E0C2795595800333874 /* headerView.swift */; };
 		307E9E0F2795598B00333874 /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 307E9E0E2795598A00333874 /* headerView.xib */; };
+		308B7B2127B4DDA200FD156C /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308B7B2027B4DDA200FD156C /* RegistrationView.swift */; };
 		30EA499327B3B1D7005F0AC0 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EA499227B3B1D6005F0AC0 /* SignInView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		307E9DFC2794331000333874 /* DogViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DogViewCell.xib; sourceTree = "<group>"; };
 		307E9E0C2795595800333874 /* headerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
 		307E9E0E2795598A00333874 /* headerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = headerView.xib; sourceTree = "<group>"; };
+		308B7B2027B4DDA200FD156C /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		30EA499227B3B1D6005F0AC0 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,9 +99,7 @@
 			children = (
 				30EA498927B38C4A005F0AC0 /* Sources */,
 				30EA498A27B38C67005F0AC0 /* Resources */,
-				307E9DB727932EB900333874 /* SignInViewController.swift */,
 				307E9DE4279402E100333874 /* APIManager.swift */,
-				307E9DD22793E86A00333874 /* RegistrationViewController.swift */,
 				307E9DE62794071100333874 /* Profile */,
 			);
 			path = WWOF;
@@ -185,6 +185,8 @@
 		30EA498F27B38D3A005F0AC0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				307E9DB727932EB900333874 /* SignInViewController.swift */,
+				307E9DD22793E86A00333874 /* RegistrationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				30EA499227B3B1D6005F0AC0 /* SignInView.swift */,
+				308B7B2027B4DDA200FD156C /* RegistrationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308B7B2127B4DDA200FD156C /* RegistrationView.swift in Sources */,
 				307E9DE32793FA9700333874 /* ProfileViewController.swift in Sources */,
 				307E9E0D2795595800333874 /* headerView.swift in Sources */,
 				307E9DD32793E86A00333874 /* RegistrationViewController.swift in Sources */,
@@ -461,7 +465,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CUB4SJUB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WWOF/Info.plist;
+				INFOPLIST_FILE = WWOF/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -489,7 +493,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CUB4SJUB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WWOF/Info.plist;
+				INFOPLIST_FILE = WWOF/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -7,7 +7,10 @@
 
 import UIKit
 
+
 class RegistrationView: UIView {
+
+    var delegate: RegistrationViewDelegate?
 
     // MARK: - Configuration
     func configureView() {
@@ -15,11 +18,7 @@ class RegistrationView: UIView {
     }
 
     // MARK: - Private properties
-    lazy var controller: RegistrationViewController = {
-        return RegistrationViewController()
-    }()
 
-    // MARK: - Views
     // MARK: - Components
     // TextFields
     lazy var textFieldLogin: UITextField = {
@@ -170,7 +169,7 @@ class RegistrationView: UIView {
         let password = textFieldPassword.text ?? "error"
         let name = textFieldName.text ?? "error"
         let surname = textFieldSurname.text ?? "error"
-        controller.registration(email: email, password: password, name: name, surname: surname)
+        delegate?.registration(email: email, password: password, name: name, surname: surname)
 
     }
     // MARK: - Constants

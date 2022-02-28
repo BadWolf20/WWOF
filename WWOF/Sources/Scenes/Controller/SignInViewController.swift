@@ -9,8 +9,12 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SignInViewController: UIViewController {
+protocol SignInViewDelegate {
+    func moveToRegistrationPage()
+    func autorization(email: String, password: String)
+}
 
+class SignInViewController: UIViewController, SignInViewDelegate {
 
     private var SignInView: SignInView? {
         guard isViewLoaded else { return nil }
@@ -25,11 +29,13 @@ class SignInViewController: UIViewController {
         view = WWOF.SignInView()
         navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
         configureView()
+
     }
 
     // MARK: - Settings
     func configureView() {
         SignInView?.configureView()
+        SignInView?.delegate = self
     }
 
 }
@@ -50,6 +56,7 @@ extension SignInViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil{
                 //self.infoLabel.text = error?.localizedDescription
+                self.SignInView?.showError(info: "j")
             } else {
                 userUId = result?.user.uid ?? "uid error"
                 
@@ -67,7 +74,7 @@ extension SignInViewController {
                         //self.infoLabel.text = "Document does not exist"
                     }
                 })
-                self.SignInView?.showError(info: "j")
+
                 self.moveToMain()
             }
         }
@@ -94,4 +101,5 @@ extension SignInViewController {
 
     
 }
+
 

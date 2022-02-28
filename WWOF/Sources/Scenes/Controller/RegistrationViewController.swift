@@ -9,7 +9,11 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RegistrationViewController: UIViewController {
+protocol RegistrationViewDelegate {
+    func registration(email: String, password: String, name: String , surname: String)
+}
+
+class RegistrationViewController: UIViewController, RegistrationViewDelegate {
 
     private var RegistrationView: RegistrationView? {
         guard isViewLoaded else { return nil }
@@ -25,11 +29,13 @@ class RegistrationViewController: UIViewController {
         view = WWOF.RegistrationView()
         configureView()
 
+
     }
 
     // MARK: - Settings
     func configureView() {
         RegistrationView?.configureView()
+        RegistrationView?.delegate = self
     }
 
     // MARK: - Functions

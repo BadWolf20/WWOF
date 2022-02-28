@@ -9,16 +9,13 @@ import UIKit
 
 class SignInView: UIView {
 
-
     // MARK: - Configuration
     func configureView() {
 
     }
 
-    // MARK: - Private properties
-    lazy var controller: SignInViewController = {
-        return SignInViewController()
-    }()
+    // MARK: - Properties
+    var delegate: SignInViewDelegate?
 
     // MARK: - Views
     // TextFields
@@ -149,7 +146,7 @@ class SignInView: UIView {
 
     // Button actions
     @objc private func moveToRegistrationPage(){
-        controller.moveToRegistrationPage()
+        delegate?.moveToRegistrationPage()
     }
 
     @objc private func autorization() {
@@ -157,7 +154,7 @@ class SignInView: UIView {
         let password = textFieldPassword.text ?? "error"
         
 
-        controller.autorization(email: email, password: password)
+        delegate?.autorization(email: email, password: password)
 
     }
 

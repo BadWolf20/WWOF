@@ -1,18 +1,24 @@
 //
-//  UserPageControlView.swift
+//  ProfileView.swift
 //  WWOF
 //
-//  Created by Roman on 16.01.2022.
+//  Created by Roman on 27.02.2022.
 //
 
-import Foundation
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileView: UIView {
+
+    var delegate: ProfileViewDelegate?
+
+    // MARK: - Configuration
+    func configureView() {
+
+    }
 
     // MARK: - Views
     lazy var collectionView: UICollectionView = {
-        let view = UICollectionView(frame: view.bounds, collectionViewLayout: createCompLayout())
+        let view = UICollectionView(frame: bounds, collectionViewLayout: createCompLayout())
         view.backgroundColor = Colors.ColectionViewBackGround
         //view.register(DogCell.self, forCellWithReuseIdentifier: DogCell.reuseId)
         let nibCell = UINib(nibName: Strings.dogCellViewNibName, bundle: nil)
@@ -26,56 +32,60 @@ class ProfileViewController: UIViewController {
 
     lazy var head: headerView = {
         let v = headerView(frame: CGRect(x: 20, y: 20, width: 330, height: 140))
-        v.settingsButton.addTarget(self, action: #selector(headerButton), for: .touchUpInside)
+        v.settingsButton.addTarget(self, action: #selector(setupButton), for: .touchUpInside)
         v.backgroundColor = Colors.headerViewBackGround
         v.layer.cornerRadius = 20 //Metric.headerViewCornerRadius
-        
+
         return v
     }()
 
-    // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Initial
 
-        navigationItem.title = "Settings"
-        setupHierarchy()
-        setupLayout()
-
+    init() {
+        super.init(frame: .zero)
+        commonInit()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        backgroundColor = .black
+        setupHierarchy()
+        setupLayout()
     }
 
     // MARK: - Settings
+
     private func setupHierarchy() {
-        view.addSubview(head)
-        view.addSubview(collectionView)
+        addSubview(head)
+        addSubview(collectionView)
     }
 
     private func setupLayout() {
-        view.backgroundColor = .cyan
+        backgroundColor = .cyan
         head.translatesAutoresizingMaskIntoConstraints = false
-        head.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Metric.headerViewTopIndent).isActive = true
-        head.bottomAnchor.constraint(equalTo: view.topAnchor, constant: Metric.headerViewBottomIndent).isActive = true
-        head.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: Metric.headerViewRightIndent).isActive = true
-        head.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Metric.headerViewLeftIndent).isActive = true
+        head.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metric.headerViewTopIndent).isActive = true
+        head.bottomAnchor.constraint(equalTo: topAnchor, constant: Metric.headerViewBottomIndent).isActive = true
+        head.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Metric.headerViewRightIndent).isActive = true
+        head.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metric.headerViewLeftIndent).isActive = true
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: head.bottomAnchor, constant: Metric.collectionViewTopIndent).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
     }
 
 }
 
 // MARK: - Functions
-extension ProfileViewController {
-
+extension ProfileView {
     // Button actions
-    @objc func headerButton() {
-        print("action")
+    @objc func setupButton() {
+        delegate?.setupButton()
     }
 
     // Functions
@@ -130,13 +140,10 @@ extension ProfileViewController {
         return section
     }
 
-    func moveToDogSetup() {
-        navigationController?.pushViewController(DogSetupViewController(), animated: true)
-    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ProfileView: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10//dogList.count
@@ -154,15 +161,16 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        moveToDogSetup()
+        delegate?.moveToDogSetup()
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 
 }
 
+
 // MARK: - Constants
 
-extension ProfileViewController{
+extension ProfileView{
     enum Colors {
         static let ColectionViewBackGround: UIColor = .orange
         static let headerViewBackGround: UIColor = .systemTeal

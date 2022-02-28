@@ -1,14 +1,21 @@
 //
-//  DogSetupViewController.swift
+//  DogSetupView.swift
 //  WWOF
 //
-//  Created by Roman on 18.01.2022.
+//  Created by Roman on 27.02.2022.
 //
 
-import Foundation
 import UIKit
 
-class DogSetupViewController: UIViewController {
+class DogSetupView: UIView {
+
+    // MARK: - Configuration
+    func configureView() {
+
+    }
+    
+    // MARK: - Properties
+    var delegate: DogSetupViewDelegate?
 
     // MARK: - Views
     // Buttons
@@ -24,51 +31,45 @@ class DogSetupViewController: UIViewController {
         return button
     }()
 
-    // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Initial
 
-        title = "dog setting"
-        navigationController?.navigationBar.isHidden = false
-        
-        view.backgroundColor = .cyan
+    init() {
+        super.init(frame: .zero)
+        commonInit()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        backgroundColor = .cyan
         setupHierarchy()
         setupLayout()
-
-
     }
 
     // MARK: - Settings
     private func setupHierarchy() {
-        view.addSubview(loginButton)
+        addSubview(loginButton)
     }
 
     private func setupLayout() {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        loginButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        loginButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
-
-}
-
-// MARK: - Functions
-extension DogSetupViewController {
 
     // Button actions
-    @objc func goBack() {
-        navigationController?.popViewController(animated: true)
+    @objc private func goBack(){
+        delegate?.goBackToProfilePage()
     }
 
-    // Functions
-
-
 }
-
-
 
 // MARK: - Constants
 
-extension DogSetupViewController{
+extension DogSetupView {
     enum Colors {
         static let ColectionViewBackGround: UIColor = .orange
         static let headerViewBackGround: UIColor = .systemTeal

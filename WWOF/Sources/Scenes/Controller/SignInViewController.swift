@@ -85,17 +85,23 @@ extension SignInViewController {
 
         let tabBarController = UITabBarController()
 
-        let UserPageViewController = ProfileViewController()
-        UserPageViewController.tabBarItem = UITabBarItem(title: "Profile", image: .remove, tag: 0)
+        let userPageViewController = ProfileViewController()
+        userPageViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("ProfileViewTitle", comment: ""),
+                                                         image: .remove, tag: 1)
+
+        let searchViewController = SearchViewController()
+        searchViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("SearchViewTitle", comment: ""),
+                                                       image: .remove, tag: 0)
+
 
         tabBarController.setViewControllers([
-            UserPageViewController
+            searchViewController,
+            userPageViewController
         ], animated: true)
         tabBarController.tabBar.backgroundColor = .white
 
         navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-
         navigationController?.pushViewController(tabBarController, animated: true)
     }
 

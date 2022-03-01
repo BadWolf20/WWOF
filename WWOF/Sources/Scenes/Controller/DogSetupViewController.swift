@@ -25,6 +25,7 @@ class DogSetupViewController: UIViewController, DogSetupViewDelegate {
 
         view = WWOF.DogSetupView()
         title = "dog setting"
+        
         navigationController?.navigationBar.isHidden = false
         navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
         configureView()

@@ -18,7 +18,9 @@ class ProfileViewController: UIViewController, ProfileViewDelegate {
     // MARK: - Lifecycle
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+
     }
 
     private var ProfileView: ProfileView? {
@@ -30,10 +32,9 @@ class ProfileViewController: UIViewController, ProfileViewDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //navigationController?.navigationBar.isHidden = true
         view = WWOF.ProfileView()
-        navigationItem.title = "Settings"
-        //navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
+        navigationItem.title = NSLocalizedString("ProfileViewTitle", comment: "")
         configureView()
 
     }

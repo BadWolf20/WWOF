@@ -8,3 +8,5 @@
 
 "SignInViewTitle" = "Autorization";
 "RegistrationViewTitle" = "Registration";
+"SearchViewTitle" = "Search";
+"ProfileViewTitle" = "Profile";

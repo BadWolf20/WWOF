@@ -8,3 +8,5 @@
 
 "SignInViewTitle" = "Авторизация";
 "RegistrationViewTitle" = "Регистрация";
+"SearchViewTitle" = "Поиск";
+"ProfileViewTitle" = "Профиль";

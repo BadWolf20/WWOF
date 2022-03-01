@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302875AD27CCFFD800D4E467 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302875AC27CCFFD800D4E467 /* SearchView.swift */; };
+		302875AF27CCFFEE00D4E467 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302875AE27CCFFEE00D4E467 /* SearchViewController.swift */; };
 		3038CD4427CB957500BA3335 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038CD4327CB957500BA3335 /* ProfileView.swift */; };
 		3038CD4627CB9B9200BA3335 /* DogSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038CD4527CB9B9200BA3335 /* DogSetupView.swift */; };
 		3063E79E2796F2CD004E0DB1 /* DogSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		302875AC27CCFFD800D4E467 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		302875AE27CCFFEE00D4E467 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3038CD4327CB957500BA3335 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3038CD4527CB9B9200BA3335 /* DogSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSetupView.swift; sourceTree = "<group>"; };
 		3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSetupViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				307E9DD22793E86A00333874 /* RegistrationViewController.swift */,
 				307E9DE22793FA9700333874 /* ProfileViewController.swift */,
 				3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */,
+				302875AE27CCFFEE00D4E467 /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				3038CD4527CB9B9200BA3335 /* DogSetupView.swift */,
 				307E9E07279553BF00333874 /* header view */,
 				307E9DF2279410FF00333874 /* DogCell */,
+				302875AC27CCFFD800D4E467 /* SearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302875AF27CCFFEE00D4E467 /* SearchViewController.swift in Sources */,
 				308B7B2127B4DDA200FD156C /* RegistrationView.swift in Sources */,
 				307E9DE32793FA9700333874 /* ProfileViewController.swift in Sources */,
 				307E9E0D2795595800333874 /* headerView.swift in Sources */,
@@ -293,6 +300,7 @@
 				3038CD4627CB9B9200BA3335 /* DogSetupView.swift in Sources */,
 				307E9DB827932EB900333874 /* SignInViewController.swift in Sources */,
 				307E9DB427932EB900333874 /* AppDelegate.swift in Sources */,
+				302875AD27CCFFD800D4E467 /* SearchView.swift in Sources */,
 				307E9DFD2794331000333874 /* DogViewCell.swift in Sources */,
 				3063E79E2796F2CD004E0DB1 /* DogSetupViewController.swift in Sources */,
 				307E9DED27940B5300333874 /* DogsModel.swift in Sources */,

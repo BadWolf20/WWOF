@@ -28,7 +28,6 @@ class ProfileViewController: UIViewController, ProfileViewDelegate {
         return view as? ProfileView
     }
 
-    let head = headerView(frame: CGRect(x: 10, y: 10, width: 100, height: 40))
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

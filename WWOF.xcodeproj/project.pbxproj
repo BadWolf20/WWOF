@@ -12,6 +12,7 @@
 		3038CD4427CB957500BA3335 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038CD4327CB957500BA3335 /* ProfileView.swift */; };
 		3038CD4627CB9B9200BA3335 /* DogSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038CD4527CB9B9200BA3335 /* DogSetupView.swift */; };
 		3063E79E2796F2CD004E0DB1 /* DogSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */; };
+		307584BB27CF480B008198B6 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307584BA27CF480B008198B6 /* UIImage.swift */; };
 		307E9DB427932EB900333874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307E9DB327932EB900333874 /* AppDelegate.swift */; };
 		307E9DB827932EB900333874 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307E9DB727932EB900333874 /* SignInViewController.swift */; };
 		307E9DBB27932EB900333874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307E9DB927932EB900333874 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		3038CD4327CB957500BA3335 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3038CD4527CB9B9200BA3335 /* DogSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSetupView.swift; sourceTree = "<group>"; };
 		3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSetupViewController.swift; sourceTree = "<group>"; };
+		307584BA27CF480B008198B6 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		307E9DB027932EB900333874 /* WWOF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWOF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		307E9DB327932EB900333874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		307E9DB727932EB900333874 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		30EA498D27B38D21005F0AC0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				307584BA27CF480B008198B6 /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				307E9DE5279402E100333874 /* APIManager.swift in Sources */,
 				30EA499327B3B1D7005F0AC0 /* SignInView.swift in Sources */,
 				3038CD4627CB9B9200BA3335 /* DogSetupView.swift in Sources */,
+				307584BB27CF480B008198B6 /* UIImage.swift in Sources */,
 				307E9DB827932EB900333874 /* SignInViewController.swift in Sources */,
 				307E9DB427932EB900333874 /* AppDelegate.swift in Sources */,
 				302875AD27CCFFD800D4E467 /* SearchView.swift in Sources */,

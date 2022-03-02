@@ -89,7 +89,7 @@ extension ProfileView {
     }
 
     // Functions
-    func createCompLayout() -> UICollectionViewLayout {
+    private func createCompLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout{ (sectionindex, layoutEnviroment) -> NSCollectionLayoutSection? in
             let section = dogList[sectionindex]
 
@@ -105,7 +105,7 @@ extension ProfileView {
         return layout
     }
 
-    func createFriendsSection() -> NSCollectionLayoutSection {
+    private func createFriendsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(86))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -122,7 +122,7 @@ extension ProfileView {
         return section
     }
 
-    func createDogsSection() -> NSCollectionLayoutSection {
+    private func createDogsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(222))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)

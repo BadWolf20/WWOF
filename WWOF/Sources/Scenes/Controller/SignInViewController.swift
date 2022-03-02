@@ -92,8 +92,7 @@ extension SignInViewController {
         let searchViewController = SearchViewController()
         searchViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("SearchViewTitle", comment: ""),
                                                        image: .remove, tag: 0)
-
-
+        
         tabBarController.setViewControllers([
             searchViewController,
             userPageViewController
@@ -102,6 +101,7 @@ extension SignInViewController {
 
         navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         navigationController?.pushViewController(tabBarController, animated: true)
     }
 

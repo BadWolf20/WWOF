@@ -26,7 +26,8 @@ class SearchViewController: UIViewController, SearchViewDelegate {
         tabBarController?.title = "fgh"
 
        // navigationController?.navigationBar.isHidden = false
-        navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
+        navigationItem.title = NSLocalizedString("SearchViewTitle", comment: "")
+        //navigationController?.toolbar.heightAnchor.constraint(equalToConstant: 5).isActive = true
         view = WWOF.SearchView()
         configureView()
 
@@ -35,7 +36,7 @@ class SearchViewController: UIViewController, SearchViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+        //navigationController?.navigationBar.isHidden = false
         navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
     }
 

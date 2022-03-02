@@ -10,7 +10,6 @@ import UIKit
 class DogViewCell: UICollectionViewCell {
     //var reuseIdentifier = "DogViewCell"
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         let redView = UIView(frame: bounds)

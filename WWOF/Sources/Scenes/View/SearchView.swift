@@ -18,22 +18,16 @@ class SearchView: UIView {
     var delegate: SearchViewDelegate?
 
     // MARK: - Views
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(DogSearchTableViewCell.self,
-                           forCellReuseIdentifier: DogSearchTableViewCell.identifier)
-        tableView.frame = CGRect.init(origin: .zero, size: frame.size)
-        tableView.rowHeight = 100
-        tableView.backgroundColor = .clear
-        tableView.separatorColor = .clear
-        //tableView.separatorInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20);
+    lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: bounds, collectionViewLayout: createDogSection())
+        view.backgroundColor = UIColor.red
 
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.register(DogSearchCollectionViewCell.self, forCellWithReuseIdentifier: DogSearchCollectionViewCell.reuseId)
 
-        tableView.dataSource = self
-        tableView.delegate = self
+        view.delegate = self
+        view.dataSource = self
 
-        return tableView
+        return view
     }()
 
     // TextFields
@@ -112,7 +106,7 @@ class SearchView: UIView {
     // MARK: - Settings
 
     private func setupHierarchy() {
-        addSubview(tableView)
+        addSubview(collectionView)
         addSubview(filterButton)
         addSubview(searchButton)
         addSubview(cityTextField)
@@ -149,11 +143,11 @@ class SearchView: UIView {
         cityTextField.heightAnchor.constraint(equalTo: searchButton.heightAnchor).isActive = true
 
 
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 10).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 10).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 
         
     }
@@ -165,58 +159,51 @@ class SearchView: UIView {
 
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
-extension SearchView: UITableViewDelegate, UITableViewDataSource {
+    // MARK: - collectionViewLayout
+extension SearchView {
+    func createDogSection() -> UICollectionViewCompositionalLayout {
+        let layout = UICollectionViewCompositionalLayout{ (sectionindex, layoutEnviroment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                  heightDimension: .fractionalHeight(240))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
 
-    // При выборе строки
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print("You push '\(indexPath.row)' row")
-
-        moveToSetttingView()
-
-    }
-
-    // При момент до выбора строки (собираемся выбрать)
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        if indexPath.row == 0 && indexPath.section == 0 {
-//            return nil
-//        }
-        return indexPath
-    }
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .estimated(1))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
 
 
-    // Количество секций
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .none
+            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+            return section
+        }
 
-     //Количество ячеек в каждой секции
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return layout
 
     }
+}
 
-    // Set the spacing between sections
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 100
-//    }
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+extension SearchView: UICollectionViewDataSource, UICollectionViewDelegate {
 
-    // Определение содержимого ячейки
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: DogSearchTableViewCell.identifier, for: indexPath) as! DogSearchTableViewCell
-
-
-        cell.configureView()
-
-        return cell
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5//dogList.count
     }
 
-    // Переход на нужное View
-    func moveToSetttingView() {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-            print("No page")
 
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DogSearchCollectionViewCell.reuseId, for: indexPath) as? DogSearchCollectionViewCell
+        cell?.layer.cornerRadius = 10
+        cell?.configure()
+        return cell!
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 
 }

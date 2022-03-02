@@ -20,10 +20,14 @@ class SearchView: UIView {
     // MARK: - Views
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(SettingsTableViewCell.self,
-                           forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        tableView.register(DogSearchTableViewCell.self,
+                           forCellReuseIdentifier: DogSearchTableViewCell.identifier)
         tableView.frame = CGRect.init(origin: .zero, size: frame.size)
-        tableView.rowHeight = 50
+        tableView.rowHeight = 100
+        tableView.backgroundColor = .clear
+        tableView.separatorColor = .clear
+        //tableView.separatorInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20);
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         tableView.dataSource = self
@@ -53,6 +57,19 @@ class SearchView: UIView {
         //button.addTarget(self, action: #selector(registration), for: .touchUpInside)
         //button.setTitle(Strings.registerButtonTitle, for: .normal)
         button.setImage(UIImage(named: "Filter")?.scalePreservingAspectRatio(targetSize: CGSize(width: 40, height: 40)), for: .normal)
+
+
+        button.backgroundColor = .blue//Colors.buttonBackGround
+        button.layer.masksToBounds = true
+
+        return button
+    }()
+
+    private lazy var mapButton: UIButton = {
+        let button = UIButton(type: .system)
+        //button.addTarget(self, action: #selector(registration), for: .touchUpInside)
+        //button.setTitle(Strings.registerButtonTitle, for: .normal)
+        button.setImage(UIImage(systemName: "map")?.scalePreservingAspectRatio(targetSize: CGSize(width: 40, height: 40)), for: .normal)
 
 
         button.backgroundColor = .blue//Colors.buttonBackGround
@@ -95,9 +112,11 @@ class SearchView: UIView {
     // MARK: - Settings
 
     private func setupHierarchy() {
+        addSubview(tableView)
         addSubview(filterButton)
         addSubview(searchButton)
         addSubview(cityTextField)
+        addSubview(mapButton)
     }
 
     private func setupLayout() {
@@ -108,6 +127,14 @@ class SearchView: UIView {
         filterButton.heightAnchor.constraint(equalToConstant: (filterButton.currentImage?.size.height)! * 1.5).isActive = true
         filterButton.widthAnchor.constraint(equalToConstant: (filterButton.currentImage?.size.width)! * 1.5).isActive = true
         filterButton.layer.cornerRadius = (filterButton.currentImage?.size.width ?? 10) * 1.5 / 2
+
+        mapButton.translatesAutoresizingMaskIntoConstraints = false
+        mapButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25).isActive = true
+        mapButton.bottomAnchor.constraint(equalTo:  bottomAnchor, constant: -110).isActive = true
+
+        mapButton.heightAnchor.constraint(equalToConstant: (filterButton.currentImage?.size.height)! * 1.5).isActive = true
+        mapButton.widthAnchor.constraint(equalToConstant: (filterButton.currentImage?.size.width)! * 1.5).isActive = true
+        mapButton.layer.cornerRadius = (filterButton.currentImage?.size.width ?? 10) * 1.5 / 2
 
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
@@ -121,12 +148,75 @@ class SearchView: UIView {
         cityTextField.trailingAnchor.constraint(equalTo: searchButton.leadingAnchor, constant: -5).isActive = true
         cityTextField.heightAnchor.constraint(equalTo: searchButton.heightAnchor).isActive = true
 
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 10).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+
         
     }
 
     // MARK: - Buttons actions
     @objc private func moveToRegistrationPage() {
         
+    }
+
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension SearchView: UITableViewDelegate, UITableViewDataSource {
+
+    // При выборе строки
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("You push '\(indexPath.row)' row")
+
+        moveToSetttingView()
+
+    }
+
+    // При момент до выбора строки (собираемся выбрать)
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//        if indexPath.row == 0 && indexPath.section == 0 {
+//            return nil
+//        }
+        return indexPath
+    }
+
+
+    // Количество секций
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+     //Количество ячеек в каждой секции
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+
+    }
+
+    // Set the spacing between sections
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 100
+//    }
+
+    // Определение содержимого ячейки
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: DogSearchTableViewCell.identifier, for: indexPath) as! DogSearchTableViewCell
+
+
+        cell.configureView()
+
+        return cell
+    }
+
+    // Переход на нужное View
+    func moveToSetttingView() {
+
+            print("No page")
+
     }
 
 }

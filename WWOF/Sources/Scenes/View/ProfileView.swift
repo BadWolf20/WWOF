@@ -23,7 +23,6 @@ class ProfileView: UIView {
         //view.register(DogCell.self, forCellWithReuseIdentifier: DogCell.reuseId)
         let nibCell = UINib(nibName: Strings.dogCellViewNibName, bundle: nil)
         view.register(nibCell, forCellWithReuseIdentifier: Strings.dogCellViewId)
-
         view.delegate = self
         view.dataSource = self
 
@@ -124,7 +123,7 @@ extension ProfileView {
 
     private func createDogsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(222))
+                                              heightDimension: .fractionalHeight(240))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
 

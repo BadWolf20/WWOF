@@ -11,6 +11,8 @@
 		302875AF27CCFFEE00D4E467 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302875AE27CCFFEE00D4E467 /* SearchViewController.swift */; };
 		3038CD4427CB957500BA3335 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038CD4327CB957500BA3335 /* ProfileView.swift */; };
 		3038CD4627CB9B9200BA3335 /* DogSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038CD4527CB9B9200BA3335 /* DogSetupView.swift */; };
+		303E0AD127D21E7800486C97 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303E0AD027D21E7800486C97 /* FilterViewController.swift */; };
+		303E0AD327D21E8A00486C97 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303E0AD227D21E8A00486C97 /* FilterView.swift */; };
 		3063E79E2796F2CD004E0DB1 /* DogSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */; };
 		307584BB27CF480B008198B6 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307584BA27CF480B008198B6 /* UIImage.swift */; };
 		307584BF27CF9027008198B6 /* DogSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307584BE27CF9027008198B6 /* DogSearchCollectionViewCell.swift */; };
@@ -42,6 +44,8 @@
 		302875AE27CCFFEE00D4E467 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3038CD4327CB957500BA3335 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3038CD4527CB9B9200BA3335 /* DogSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSetupView.swift; sourceTree = "<group>"; };
+		303E0AD027D21E7800486C97 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		303E0AD227D21E8A00486C97 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3063E79D2796F2CD004E0DB1 /* DogSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSetupViewController.swift; sourceTree = "<group>"; };
 		307584BA27CF480B008198B6 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		307584BE27CF9027008198B6 /* DogSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 		30EA498F27B38D3A005F0AC0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				303E0AD027D21E7800486C97 /* FilterViewController.swift */,
 				307E9DB727932EB900333874 /* SignInViewController.swift */,
 				307E9DD22793E86A00333874 /* RegistrationViewController.swift */,
 				307E9DE22793FA9700333874 /* ProfileViewController.swift */,
@@ -198,6 +203,7 @@
 				307E9DF2279410FF00333874 /* DogCell */,
 				302875AC27CCFFD800D4E467 /* SearchView.swift */,
 				307584BE27CF9027008198B6 /* DogSearchCollectionViewCell.swift */,
+				303E0AD227D21E8A00486C97 /* FilterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,9 +313,11 @@
 				3038CD4627CB9B9200BA3335 /* DogSetupView.swift in Sources */,
 				307584BB27CF480B008198B6 /* UIImage.swift in Sources */,
 				307E9DB827932EB900333874 /* SignInViewController.swift in Sources */,
+				303E0AD127D21E7800486C97 /* FilterViewController.swift in Sources */,
 				307E9DB427932EB900333874 /* AppDelegate.swift in Sources */,
 				302875AD27CCFFD800D4E467 /* SearchView.swift in Sources */,
 				307E9DFD2794331000333874 /* DogViewCell.swift in Sources */,
+				303E0AD327D21E8A00486C97 /* FilterView.swift in Sources */,
 				3063E79E2796F2CD004E0DB1 /* DogSetupViewController.swift in Sources */,
 				307E9DED27940B5300333874 /* DogsModel.swift in Sources */,
 			);

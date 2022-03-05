@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SearchViewDelegate {
-
+    func openFilter()
 }
 
 class SearchViewController: UIViewController, SearchViewDelegate {
@@ -23,7 +23,7 @@ class SearchViewController: UIViewController, SearchViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("SearchViewTitle", comment: "")
-        tabBarController?.title = "fgh"
+        //tabBarController?.title = "fgh"
 
        // navigationController?.navigationBar.isHidden = false
         navigationItem.title = NSLocalizedString("SearchViewTitle", comment: "")
@@ -44,13 +44,19 @@ class SearchViewController: UIViewController, SearchViewDelegate {
         super.viewDidDisappear(animated)
         //navigationController?.navigationBar.isHidden = true
 
-        print("dis")
     }
 
     // MARK: - Settings
     func configureView() {
         SearchView?.configureView()
         SearchView?.delegate = self
+    }
+
+
+    func openFilter() {
+        let navigationController = UINavigationController(rootViewController: FilterViewController())
+
+        present(navigationController, animated: true, completion: nil)
     }
 
 }

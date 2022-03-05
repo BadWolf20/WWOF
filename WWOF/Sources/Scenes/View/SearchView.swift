@@ -18,9 +18,9 @@ class SearchView: UIView {
     var delegate: SearchViewDelegate?
 
     // MARK: - Views
-    lazy var collectionView: UICollectionView = {
+    lazy var searchCollectionView: UICollectionView = {
         let view = UICollectionView(frame: bounds, collectionViewLayout: createDogSection())
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = Colors.searchCollectionViewBackground
 
         view.register(DogSearchCollectionViewCell.self, forCellWithReuseIdentifier: DogSearchCollectionViewCell.reuseId)
 
@@ -33,12 +33,12 @@ class SearchView: UIView {
     // TextFields
     lazy var cityTextField: UITextField = {
         let field = UITextField()
-        field.backgroundColor = .blue
-        //field.textColor = Colors.textFieldText
-        field.attributedPlaceholder = NSAttributedString(string: "Введите город", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        field.font = .systemFont(ofSize: 18)
+        field.backgroundColor = Colors.cityTextFieldBackground
+        field.attributedPlaceholder = NSAttributedString(string: Strings.cityTextFieldPlaceholder,
+                                                         attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        field.font = .systemFont(ofSize: Metric.cityTextFieldFontSize)
         field.layer.masksToBounds = true
-        field.layer.cornerRadius = Metric.textFieldCornerRadius
+        field.layer.cornerRadius = Metric.cityTextFieldCornerRadius
         field.autocapitalizationType = .none
         //field.text = Strings.textFieldPasswordText
 
@@ -48,12 +48,12 @@ class SearchView: UIView {
     // Buttons
     private lazy var filterButton: UIButton = {
         let button = UIButton(type: .system)
-        //button.addTarget(self, action: #selector(registration), for: .touchUpInside)
+        button.addTarget(self, action: #selector(openFilter), for: .touchUpInside)
         //button.setTitle(Strings.registerButtonTitle, for: .normal)
-        button.setImage(UIImage(named: "Filter")?.scalePreservingAspectRatio(targetSize: CGSize(width: 40, height: 40)), for: .normal)
+        button.setImage(Images.filterButtonImage?.scalePreservingAspectRatio(targetSize: Metric.filterButtonImageSize), for: .normal)
 
 
-        button.backgroundColor = .blue//Colors.buttonBackGround
+        button.backgroundColor = Colors.filterButtonBackground
         button.layer.masksToBounds = true
 
         return button
@@ -63,10 +63,10 @@ class SearchView: UIView {
         let button = UIButton(type: .system)
         //button.addTarget(self, action: #selector(registration), for: .touchUpInside)
         //button.setTitle(Strings.registerButtonTitle, for: .normal)
-        button.setImage(UIImage(systemName: "map")?.scalePreservingAspectRatio(targetSize: CGSize(width: 40, height: 40)), for: .normal)
+        button.setImage(Images.mapButtonImage?.scalePreservingAspectRatio(targetSize: Metric.mapButtonImageSize), for: .normal)
 
 
-        button.backgroundColor = .blue//Colors.buttonBackGround
+        button.backgroundColor = Colors.mapButtonBackground
         button.layer.masksToBounds = true
 
         return button
@@ -76,9 +76,9 @@ class SearchView: UIView {
         let button = UIButton(type: .system)
         //button.addTarget(self, action: #selector(registration), for: .touchUpInside)
         //button.setTitle(Strings.registerButtonTitle, for: .normal)
-        button.setImage(UIImage(systemName: "magnifyingglass")?.scalePreservingAspectRatio(targetSize: CGSize(width: 30, height: 30)), for: .normal)
+        button.setImage(Images.searchButtonImage?.scalePreservingAspectRatio(targetSize: Metric.searchButtonImageSize), for: .normal)
 
-        button.backgroundColor = .cyan//Colors.buttonBackGround
+        button.backgroundColor = Colors.searchButtonBackground
         button.layer.masksToBounds = true
 
         return button
@@ -106,7 +106,7 @@ class SearchView: UIView {
     // MARK: - Settings
 
     private func setupHierarchy() {
-        addSubview(collectionView)
+        addSubview(searchCollectionView)
         addSubview(filterButton)
         addSubview(searchButton)
         addSubview(cityTextField)
@@ -143,18 +143,18 @@ class SearchView: UIView {
         cityTextField.heightAnchor.constraint(equalTo: searchButton.heightAnchor).isActive = true
 
 
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 10).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        searchCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        searchCollectionView.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 10).isActive = true
+        searchCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        searchCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        searchCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 
         
     }
 
     // MARK: - Buttons actions
-    @objc private func moveToRegistrationPage() {
-        
+    @objc private func openFilter() {
+        delegate?.openFilter()
     }
 
 }
@@ -164,7 +164,7 @@ extension SearchView {
     func createDogSection() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout{ (sectionindex, layoutEnviroment) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .fractionalHeight(240))
+                                                  heightDimension: .fractionalHeight(140 + 10))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
 
@@ -211,19 +211,32 @@ extension SearchView: UICollectionViewDataSource, UICollectionViewDelegate {
 // MARK: - Constants
 extension SearchView {
     enum Colors {
-        static let textFieldBackGround: UIColor = .orange
-
+        static let searchCollectionViewBackground: UIColor = .red
+        static let cityTextFieldBackground: UIColor = .blue
+        static let cityTextFieldPlaceholder: UIColor = .gray
+        static let filterButtonBackground: UIColor = .blue
+        static let mapButtonBackground: UIColor = .blue
+        static let searchButtonBackground: UIColor = .cyan
     }
 
     enum Metric {
-        // textField
-        static let textFieldCornerRadius: CGFloat = 5
+        static let cityTextFieldCornerRadius: CGFloat = 5
+        static let cityTextFieldFontSize: CGFloat = 18
+        static let filterButtonImageSize: CGSize = CGSize(width: 40, height: 40)
+        static let mapButtonImageSize: CGSize = CGSize(width: 40, height: 40)
+        static let searchButtonImageSize: CGSize = CGSize(width: 30, height: 30)
+
 
     }
 
     enum Strings {
-        static let textFieldLoginPlaceholder: String = "Enter login"
+        static let cityTextFieldPlaceholder: String = "Введите город"
+    }
 
+    enum Images {
+        static let filterButtonImage: UIImage? = UIImage(named: "Filter")
+        static let mapButtonImage: UIImage? = UIImage(systemName: "map")
+        static let searchButtonImage: UIImage? = UIImage(systemName: "magnifyingglass")
     }
 }
 

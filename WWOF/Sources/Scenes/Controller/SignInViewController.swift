@@ -21,7 +21,6 @@ class SignInViewController: UIViewController, SignInViewDelegate {
         return view as? SignInView
     }
 
-    let head = headerView(frame: CGRect(x: 10, y: 10, width: 100, height: 40))
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +84,7 @@ extension SignInViewController {
 
         let tabBarController = UITabBarController()
 
+
         let userPageViewController = ProfileViewController()
         userPageViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("ProfileViewTitle", comment: ""),
                                                          image: .remove, tag: 1)
@@ -97,7 +97,7 @@ extension SignInViewController {
             searchViewController,
             userPageViewController
         ], animated: true)
-        tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.backgroundColor = .clear
 
         navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false

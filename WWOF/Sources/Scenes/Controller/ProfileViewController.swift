@@ -31,9 +31,9 @@ class ProfileViewController: UIViewController, ProfileViewDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationController?.navigationBar.isHidden = true
+        //navigationController?.navigationBar.isHidden = false
         view = WWOF.ProfileView()
-        navigationItem.title = NSLocalizedString("ProfileViewTitle", comment: "")
+        title = NSLocalizedString("ProfileViewTitle", comment: "")
         configureView()
 
     }

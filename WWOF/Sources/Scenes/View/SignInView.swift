@@ -103,6 +103,18 @@ class SignInView: UIView {
         setupLayout()
     }
 
+//    override func draw(_ rect: CGRect) {
+//        for g in 0...255 {
+//            for b in 0...255 {
+//                let pathRec = CGRect(x: 10 + g, y: 450 + b, width: 1, height: 1)
+//                let path = UIBezierPath(rect: pathRec)
+//                let color = UIColor(red: 0.5, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: 1.0)
+//                color.setFill()
+//                path.fill()
+//            }
+//        }
+//    }
+
     // MARK: - Settings
 
     private func setupHierarchy() {

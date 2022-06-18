@@ -28,7 +28,7 @@ class SignInViewController: UIViewController, SignInViewDelegate {
         view = WWOF.SignInView()
         navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
         configureView()
-
+        
     }
 
     // MARK: - Settings
@@ -85,24 +85,38 @@ extension SignInViewController {
         let tabBarController = UITabBarController()
 
 
-        let userPageViewController = ProfileViewController()
+        let userPageViewController = UINavigationController(rootViewController: ProfileViewController())//ProfileViewController()
         userPageViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("ProfileViewTitle", comment: ""),
                                                          image: .remove, tag: 1)
+//        userPageViewController.title = NSLocalizedString("ProfileViewTitle", comment: "")
+//        userPageViewController.tabBarItem.image = .add
 
-        let searchViewController = SearchViewController()
+
+        let searchViewController = UINavigationController(rootViewController: SearchViewController()) //SearchViewController()
         searchViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("SearchViewTitle", comment: ""),
                                                        image: .remove, tag: 0)
         
+        let chatViewController = UINavigationController(rootViewController: ChatViewController())
+        chatViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("ChatViewTitle", comment: ""),
+                                                     image: .remove, tag: 2)
+
         tabBarController.setViewControllers([
             searchViewController,
+            chatViewController,
             userPageViewController
         ], animated: true)
-        tabBarController.tabBar.backgroundColor = .clear
+        tabBarController.selectedIndex = 1
+        tabBarController.tabBar.backgroundColor = .red
+        //navigationItem.hidesBackButton = true
 
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
-        navigationController?.pushViewController(tabBarController, animated: true)
+        tabBarController.modalPresentationStyle = .fullScreen
+        present(tabBarController, animated: true, completion: nil)
+
+       // navigationController?.navigationBar.isHidden = true
+        //navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
+        //navigationController?.pushViewController(tabBarController, animated: true)
     }
 
     

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FilterViewDelegate {
-
+    func filtrate()
 }
 
 class FilterViewController: UIViewController, FilterViewDelegate {
@@ -35,5 +35,10 @@ class FilterViewController: UIViewController, FilterViewDelegate {
         FilterView?.delegate = self
     }
 
-}
 
+
+    func filtrate() {
+        dismiss(animated: true, completion: nil)
+    }
+
+}

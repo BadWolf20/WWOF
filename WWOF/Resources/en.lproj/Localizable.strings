@@ -10,4 +10,9 @@
 "RegistrationViewTitle" = "Registration";
 "SearchViewTitle" = "Search";
 "ProfileViewTitle" = "Profile";
+
 "FilterViewTitle" = "Filter";
+"FiltButtonTitle" = "Filtrate";
+"CleanButtonTitle" = "Сlean filter";
+
+"ChatiewTitle" = "Chat";

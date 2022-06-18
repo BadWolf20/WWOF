@@ -64,7 +64,7 @@ class ProfileView: UIView {
     }
 
     private func setupLayout() {
-        backgroundColor = .cyan
+        backgroundColor = Colors.ViewBackGround
         head.translatesAutoresizingMaskIntoConstraints = false
         head.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metric.headerViewTopIndent).isActive = true
         head.bottomAnchor.constraint(equalTo: topAnchor, constant: Metric.headerViewBottomIndent).isActive = true
@@ -171,7 +171,8 @@ extension ProfileView: UICollectionViewDataSource, UICollectionViewDelegate {
 
 extension ProfileView{
     enum Colors {
-        static let ColectionViewBackGround: UIColor = .orange
+        static let ViewBackGround: UIColor = .clear
+        static let ColectionViewBackGround: UIColor = .clear
         static let headerViewBackGround: UIColor = .systemTeal
         static let textFieldPlaceHolder: UIColor = .red
         static let loginButtonBackGround: UIColor = .white

@@ -10,4 +10,9 @@
 "RegistrationViewTitle" = "Регистрация";
 "SearchViewTitle" = "Поиск";
 "ProfileViewTitle" = "Профиль";
+
 "FilterViewTitle" = "Фильтр";
+"FiltButtonTitle" = "Отфильтровать";
+"CleanButtonTitle" = "Очистить фильтр";
+
+"ChatViewTitle" = "Чат";

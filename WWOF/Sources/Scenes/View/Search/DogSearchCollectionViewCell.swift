@@ -62,6 +62,11 @@ class DogSearchCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    private lazy var image: ScrolImage = {
+        let im = ScrolImage(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
+        return im
+    }()
+
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -86,6 +91,7 @@ class DogSearchCollectionViewCell: UICollectionViewCell {
         addSubview(sexLabel)
         addSubview(ageLabel)
         addSubview(distanceLabel)
+            // addSubview(image)
     }
 
     func setupLayout() {
@@ -120,6 +126,11 @@ class DogSearchCollectionViewCell: UICollectionViewCell {
         distanceLabel.centerXAnchor.constraint(equalTo: mainImage.centerXAnchor).isActive = true
         distanceLabel.heightAnchor.constraint(equalToConstant: Metric.distanceLabelFontSize).isActive = true
 
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+//        image.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//        image.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        image.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
 
     }
 

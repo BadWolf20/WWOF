@@ -23,27 +23,15 @@ class SearchViewController: UIViewController, SearchViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("SearchViewTitle", comment: "")
-        //tabBarController?.title = "fgh"
 
-       // navigationController?.navigationBar.isHidden = false
-        navigationItem.title = NSLocalizedString("SearchViewTitle", comment: "")
-        //navigationController?.toolbar.heightAnchor.constraint(equalToConstant: 5).isActive = true
         view = WWOF.SearchView()
         configureView()
-
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //navigationController?.navigationBar.isHidden = false
-        navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //navigationController?.navigationBar.isHidden = true
-
+        navigationController?.navigationBar.isHidden = true
     }
 
     // MARK: - Settings
@@ -52,11 +40,13 @@ class SearchViewController: UIViewController, SearchViewDelegate {
         SearchView?.delegate = self
     }
 
+}
 
+// MARK: - Functions
+extension SearchViewController {
     func openFilter() {
         let navigationController = UINavigationController(rootViewController: FilterViewController())
 
         present(navigationController, animated: true, completion: nil)
     }
-
 }

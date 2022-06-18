@@ -145,7 +145,7 @@ class SearchView: UIView {
 
         searchCollectionView.translatesAutoresizingMaskIntoConstraints = false
         searchCollectionView.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 10).isActive = true
-        searchCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        searchCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         searchCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         searchCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 

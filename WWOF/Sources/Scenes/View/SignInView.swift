@@ -104,15 +104,18 @@ class SignInView: UIView {
     }
 
 //    override func draw(_ rect: CGRect) {
-//        for g in 0...255 {
-//            for b in 0...255 {
-//                let pathRec = CGRect(x: 10 + g, y: 450 + b, width: 1, height: 1)
-//                let path = UIBezierPath(rect: pathRec)
-//                let color = UIColor(red: 0.5, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: 1.0)
-//                color.setFill()
-//                path.fill()
+//        let s = 5
+//        let r = 12
+//            for g in 0...16 {
+//                for b in 0...16 {
+//                    let pathRec = CGRect(x: 10 + g * s, y: 450 + b * s, width: s, height: s)
+//                    let path = UIBezierPath(rect: pathRec)
+//                    let color = UIColor(red: CGFloat(r * 16)/255, green: CGFloat(g * 16)/255, blue: CGFloat(b * 16)/255, alpha: 1.0)
+//                    color.setFill()
+//                    path.fill()
+//                }
 //            }
-//        }
+//
 //    }
 
     // MARK: - Settings

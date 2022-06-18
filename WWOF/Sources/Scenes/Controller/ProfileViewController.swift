@@ -15,14 +15,7 @@ protocol ProfileViewDelegate {
 
 class ProfileViewController: UIViewController, ProfileViewDelegate {
 
-    // MARK: - Lifecycle
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-
-    }
-
+    // MARK: - Properties
     private var ProfileView: ProfileView? {
         guard isViewLoaded else { return nil }
         return view as? ProfileView
@@ -31,11 +24,16 @@ class ProfileViewController: UIViewController, ProfileViewDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationController?.navigationBar.isHidden = false
+            //title = NSLocalizedString("ProfileViewTitle", comment: "")
+
         view = WWOF.ProfileView()
-        title = NSLocalizedString("ProfileViewTitle", comment: "")
         configureView()
 
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
 
     // MARK: - Settings

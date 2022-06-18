@@ -28,7 +28,7 @@ class SignInViewController: UIViewController, SignInViewDelegate {
         view = WWOF.SignInView()
         navigationItem.title = NSLocalizedString("SignInViewTitle", comment: "")
         configureView()
-        
+        moveToMain()
     }
 
     // MARK: - Settings
@@ -105,7 +105,7 @@ extension SignInViewController {
             chatViewController,
             userPageViewController
         ], animated: true)
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 2
         tabBarController.tabBar.backgroundColor = .red
         //navigationItem.hidesBackButton = true
 

@@ -61,6 +61,7 @@ class ProfileView: UIView {
     private func setupHierarchy() {
         addSubview(head)
         addSubview(collectionView)
+
     }
 
     private func setupLayout() {
@@ -186,7 +187,7 @@ extension ProfileView{
     enum Metric {
         // headerView
         static let headerViewTopIndent: CGFloat = 0
-        static let headerViewBottomIndent: CGFloat = 160
+        static let headerViewBottomIndent: CGFloat = 200
         static let headerViewLeftIndent: CGFloat = 10
         static let headerViewRightIndent: CGFloat = -10
         static let headerViewCornerRadius: CGFloat = 15

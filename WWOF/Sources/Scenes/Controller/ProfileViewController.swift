@@ -11,6 +11,7 @@ import UIKit
 protocol ProfileViewDelegate {
     func moveToDogSetup()
     func setupButton()
+    
 }
 
 class ProfileViewController: UIViewController, ProfileViewDelegate {
@@ -28,12 +29,15 @@ class ProfileViewController: UIViewController, ProfileViewDelegate {
 
         view = WWOF.ProfileView()
         configureView()
+        let add = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: .none)
+        navigationItem.rightBarButtonItems = [add]
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        //navigationController?.navigationBar.isHidden = true
+
     }
 
     // MARK: - Settings
